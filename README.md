@@ -58,7 +58,7 @@ In this work, we introduce **ElaMamba**, a novel architecture featuring an **Ela
 
 ### 1. Environment Setup
 
-We recommend using Conda to manage your environment.
+We recommend using Conda to manage your environment. You can also refer to the detailed [`docs/environment.yml`](./docs/environment.yml).
 ```bash
 conda create -n elamamba python=3.9 -y
 conda activate elamamba
@@ -80,34 +80,13 @@ Please organize your datasets in the `data/` directory as follows:
 - **ModelNet40:** `data/ModelNet/modelnet40_normal_resampled`
 - **ScanObjectNN:** `data/ScanObjectNN`
 
-For detailed instructions, please refer to `DATASET.md`.
+**👉 See [`docs/DATASET.md`](./docs/DATASET.md) for detailed dataset instructions.**
 
 ### 3. Usage
 
 To ensure environment consistency and utilize the DDP wrapper properly, we strongly recommend using `torch.distributed.launch` for both single-GPU and multi-GPU runs.
 
-#### Evaluation (Testing)
-
-To evaluate the best checkpoint on ModelNet40 (using our 10-vote strategy):
-
-```bash
-CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 main.py --test \
---config cfgs/finetune_modelnet.yaml \
---ckpts path/to/your/ckpt-best.pth \
---exp_name evaluate_modelnet_best \
---vote
-```
-
-#### Full Fine-tuning
-
-To fine-tune ElaMamba from a pre-trained backbone:
-
-```bash
-CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 main.py --finetune_model \
---config cfgs/finetune_modelnet.yaml \
---ckpts ckpts/pretrain.pth \
---exp_name elamamba_modelnet_finetune
-```
+**👉 See [`docs/USAGE.md`](./docs/USAGE.md) for full commands on training, fine-tuning, and evaluation.**
 
 ## 🔍 Built-in Visualization Tools
 
