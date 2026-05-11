@@ -4,7 +4,7 @@
 
 This codebase was tested with the following environment configurations. It may work with other versions.
 - Ubuntu 20.04
-- CUDA 11.8 (Recommended) / 11.7
+- CUDA  11.7
 - Python 3.9
 - PyTorch 2.0.0+ / 1.13.1
 
@@ -22,7 +22,7 @@ conda create -n elamamba python=3.9 -y
 conda activate elamamba
 
 # Install PyTorch (Adjust CUDA version based on your hardware)
-conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 
 # Install basic required packages
 pip install -r requirements.txt
