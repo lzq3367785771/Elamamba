@@ -2,12 +2,11 @@
 
 The overall directory structure should be:
 ```
-│PointMamba/
+│ElaMamba/
 ├──cfgs/
 ├──data/
 │   ├──ModelNet/
 │   ├──ScanObjectNN/
-│   ├──ShapeNet55-34/
 │   ├──shapenetcore_partanno_segmentation_benchmark_v0_normal/
 ├──datasets/
 ├──.......
