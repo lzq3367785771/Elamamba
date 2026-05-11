@@ -31,7 +31,7 @@ In this work, we introduce **ElaMamba**, a novel architecture featuring an **Ela
 
 ## 🌟 Key Innovations
 
-* **Elastic Structural Scanning (ESS):** Dynamically optimizes the scanning sequence sequence offsets to capture local geometric priors.
+* **Elastic Structural Scanning (ESS):** Dynamically optimizes the scanning sequence offsets to capture local geometric priors.
 * **Dynamic Gating Mechanism:** Intelligently fuses features from different scanning directions based on structural salience.
 * **Adaptive Regularization Loss ($\mathcal{L}_{reg}$):** A novel constraint applied directly to the ESS offset predictions, preventing sequence degeneration during early training phases.
 * **Golden Sample Hunter:** A built-in evaluation tool to automatically capture and save hard-to-classify point clouds where ElaMamba succeeds over traditional baselines.
@@ -71,58 +71,68 @@ pip install -r requirements.txt
 cd extensions/pointnet2_ops_lib
 python setup.py install
 cd ../../
-2. Data Preparation
-Please organize your datasets in the data/ directory as follows:
+```
 
-ModelNet40: data/ModelNet/modelnet40_normal_resampled
+### 2. Data Preparation
 
-ScanObjectNN: data/ScanObjectNN
+Please organize your datasets in the `data/` directory as follows:
 
-For detailed instructions, please refer to DATASET.md.
+- **ModelNet40:** `data/ModelNet/modelnet40_normal_resampled`
+- **ScanObjectNN:** `data/ScanObjectNN`
 
-3. Usage
-To ensure environment consistency and utilize the DDP wrapper properly, we strongly recommend using torch.distributed.launch for both single-GPU and multi-GPU runs.
+For detailed instructions, please refer to `DATASET.md`.
 
-Evaluation (Testing)
+### 3. Usage
+
+To ensure environment consistency and utilize the DDP wrapper properly, we strongly recommend using `torch.distributed.launch` for both single-GPU and multi-GPU runs.
+
+#### Evaluation (Testing)
+
 To evaluate the best checkpoint on ModelNet40 (using our 10-vote strategy):
 
-Bash
+```bash
 CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 main.py --test \
 --config cfgs/finetune_modelnet.yaml \
 --ckpts path/to/your/ckpt-best.pth \
 --exp_name evaluate_modelnet_best \
 --vote
-Full Fine-tuning
+```
+
+#### Full Fine-tuning
+
 To fine-tune ElaMamba from a pre-trained backbone:
 
-Bash
+```bash
 CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 main.py --finetune_model \
 --config cfgs/finetune_modelnet.yaml \
 --ckpts ckpts/pretrain.pth \
 --exp_name elamamba_modelnet_finetune
-🔍 Built-in Visualization Tools
-ElaMamba provides powerful visualization scripts out of the box in runner_finetune.py:
+```
 
-t-SNE Plotter (test_tsne): Generates high-quality 2D feature embeddings (./vis/tsne/tsne_fix_.pdf).
+## 🔍 Built-in Visualization Tools
 
-Golden Sample Hunter: Automatically compares predictions against baseline mistakes and saves .npy point clouds of successful corrections into Paper_Vis_Data/ for qualitative paper figures.
+ElaMamba provides powerful visualization scripts out of the box in `runner_finetune.py`:
 
-🤝 Acknowledgement
+- **t-SNE Plotter (`test_tsne`):** Generates high-quality 2D feature embeddings (`./vis/tsne/tsne_fix_.pdf`).
+- **Golden Sample Hunter:** Automatically compares predictions against baseline mistakes and saves `.npy` point clouds of successful corrections into `Paper_Vis_Data/` for qualitative paper figures.
+
+## 🤝 Acknowledgement
+
 Our codebase is built upon several excellent open-source projects. We express our gratitude to the authors of:
 
-PointMamba
+- [PointMamba](#)
+- [Point-MAE](#)
+- [Mamba](#)
 
-Point-MAE
+## 📖 Citation
 
-Mamba
-
-📖 Citation
 If you find our method, code, or "Golden Sample Hunter" useful in your research, please consider giving us a star ⭐ and citing our paper:
 
-Code snippet
+```bibtex
 @article{ElaMamba2026,
       title={ElaMamba: Enhancing 3D Point Cloud Analysis with Elastic Structural Scanning}, 
       author={Your Name and Co-authors},
       journal={arXiv preprint},
       year={2026}
 }
+```
