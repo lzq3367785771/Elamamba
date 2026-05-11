@@ -84,16 +84,9 @@ Please organize your datasets in the `data/` directory as follows:
 
 ### 3. Usage
 
-To ensure environment consistency and utilize the DDP wrapper properly, we strongly recommend using `torch.distributed.launch` for both single-GPU and multi-GPU runs.
 
 **👉 See [`docs/USAGE.md`](./docs/USAGE.md) for full commands on training, fine-tuning, and evaluation.**
 
-## 🔍 Built-in Visualization Tools
-
-ElaMamba provides powerful visualization scripts out of the box in `runner_finetune.py`:
-
-- **t-SNE Plotter (`test_tsne`):** Generates high-quality 2D feature embeddings (`./vis/tsne/tsne_fix_.pdf`).
-- **Golden Sample Hunter:** Automatically compares predictions against baseline mistakes and saves `.npy` point clouds of successful corrections into `Paper_Vis_Data/` for qualitative paper figures.
 
 ## 🤝 Acknowledgement
 
