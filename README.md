@@ -48,9 +48,8 @@ In this work, we introduce **ElaMamba**, a novel architecture featuring an **Ela
 | Task | Dataset | Config | Overall Acc. | Download (ckpt/log) |
 | :---- | :---- | :---- |:-------:|:---:|
 | Pre-training | ShapeNet | [pretrain.yaml](./cfgs/pretrain.yaml) | N.A. | [ckpt](#) |
-| Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | **93.6%** | [ckpt](#) \| [log](#) |
-| Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | **89.3%** | [ckpt](#) \| [log](#) |
-| Classification | ScanObjectNN | [finetune_scan_objonly.yaml](./cfgs/finetune_scan_objonly.yaml) | **TBD** | [ckpt](#) \| [log](#) |
+| Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | **93.0%** | [ckpt](#) \| [log](#) |
+| Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | **89.34%** | [ckpt](#) \| [log](#) |
 
 *(Note: Click the links above to download the pre-trained weights and training logs. Links will be activated upon paper release.)*
 
@@ -60,9 +59,9 @@ In this work, we introduce **ElaMamba**, a novel architecture featuring an **Ela
 
 We recommend using Conda to manage your environment. You can also refer to the detailed [`docs/environment.yml`](./docs/environment.yml).
 ```bash
-conda create -n elamamba python=3.9 -y
+conda create -n elamamba python=3.9.18 -y
 conda activate elamamba
-conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 
 # Install dependencies
 pip install -r requirements.txt
