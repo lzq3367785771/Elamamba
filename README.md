@@ -1,31 +1,73 @@
-# ElaMamba: Enhancing 3D Point Cloud Analysis with Elastic Structural Scanning
+<div align="center">    
+ </div>
 
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Framework: PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?logo=PyTorch&logoColor=white)](#)
+<div align="center">
+<h1>ElaMamba</h1>
+<h3>Enhancing 3D Point Cloud Analysis with Elastic Structural Scanning</h3>
 
-This is the official PyTorch implementation of **ElaMamba**. 
+[Your Name](https://your-homepage.com/)<sup>1</sup> \*, [Co-author Name](https://co-author.com/)<sup>1</sup> \*, [Co-author Name]()<sup>2</sup>, and [Advisor Name]()<sup>1†</sup>
 
-In this repository, we introduce **ElaMamba**, a novel architecture tailored for 3D point cloud classification. By integrating an **Elastic Structural Scanning (ESS)** module, Dynamic Gating, and an Adaptive Regularization Loss, ElaMamba effectively captures both local geometries and global contexts using State Space Models (Mamba), achieving state-of-the-art performance on multiple benchmarks.
+<sup>1</sup> Your University / Institute, <sup>2</sup> Collaborating Institute
 
-> **Insert your architecture diagram here:** > `![ElaMamba Architecture](figure/architecture.png)`
+(\*) Equal contribution. ($\dagger$) Corresponding author.
 
-## 🚀 Key Features
-* **Elastic Structural Scanning (ESS):** Dynamically optimizes the scanning sequence of 3D point clouds.
-* **Adaptive Regularization Loss:** Constrains the predicted structural offsets to ensure robust convergence.
-* **Efficient Mamba Backbone:** Leverages State Space Models for linear-complexity sequence modeling on 3D data.
+[![arXiv](https://img.shields.io/badge/Arxiv-Coming_Soon-b31b1b.svg?logo=arXiv)](#)
+[![Project](https://img.shields.io/badge/Homepage-project-orange.svg?logo=googlehome)](#)
+[![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
+
+</div>
+
+## 📣 News
+
+- **[May 2026]** 🚀 We release the official implementation of **ElaMamba**, including the complete Elastic Structural Scanning (ESS) module and pre-trained weights!
+- **[May 2026]** The codebase has been fully refactored to support multi-GPU and single-GPU setups seamlessly using `torch.distributed.launch`.
+- **[Coming Soon]** The paper will be available on arXiv shortly.
+
+## 📝 Abstract
+
+While State Space Models (SSMs) like Mamba have shown great promise in sequence modeling with linear complexity, adapting them to unordered and irregular 3D point clouds remains challenging. Existing methods often rely on fixed or heuristic scanning strategies, which fail to capture complex local geometries adaptively. 
+
+In this work, we introduce **ElaMamba**, a novel architecture featuring an **Elastic Structural Scanning (ESS)** module. Rather than using static space-filling curves, ESS dynamically predicts offset sequences guided by a **Dynamic Gating** mechanism, allowing the model to adaptively "perceive" structural variations. To ensure robust convergence, we further introduce an **Adaptive Regularization Loss ($\mathcal{L}_{reg}$)**. Comprehensive evaluations demonstrate that ElaMamba achieves state-of-the-art performance on major point cloud analysis benchmarks while maintaining the linear complexity advantage of SSMs.
+
+## 🌟 Key Innovations
+
+* **Elastic Structural Scanning (ESS):** Dynamically optimizes the scanning sequence sequence offsets to capture local geometric priors.
+* **Dynamic Gating Mechanism:** Intelligently fuses features from different scanning directions based on structural salience.
+* **Adaptive Regularization Loss ($\mathcal{L}_{reg}$):** A novel constraint applied directly to the ESS offset predictions, preventing sequence degeneration during early training phases.
+* **Golden Sample Hunter:** A built-in evaluation tool to automatically capture and save hard-to-classify point clouds where ElaMamba succeeds over traditional baselines.
+
+## 🏛️ Architecture Overview
+
+<div align="center">    
+ <img src="./figure/architecture.png" width = "888"  align=center />
+ *Figure 1: The overall architecture of ElaMamba and the detailed design of the ESS module.*
+</div>
 
 ## 📊 Main Results
 
-| Dataset | Split | Overall Accuracy (OA) | Checkpoint |
-| :--- | :---: | :---: | :---: |
-| **ModelNet40** | Test | 93.6% | [Download](#) |
-| **ScanObjectNN** | Hardest | 88.X% | [Download](#) |
+| Task | Dataset | Config | Overall Acc. | Download (ckpt/log) |
+| :---- | :---- | :---- |:-------:|:---:|
+| Pre-training | ShapeNet | [pretrain.yaml](./cfgs/pretrain.yaml) | N.A. | [ckpt](#) |
+| Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | **93.6%** | [ckpt](#) \| [log](#) |
+| Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | **89.3%** | [ckpt](#) \| [log](#) |
+| Classification | ScanObjectNN | [finetune_scan_objonly.yaml](./cfgs/finetune_scan_objonly.yaml) | **TBD** | [ckpt](#) \| [log](#) |
 
-*(Note: Pre-trained weights will be uploaded to the `ckpts` folder soon.)*
+*(Note: Click the links above to download the pre-trained weights and training logs. Links will be activated upon paper release.)*
 
-## 🛠️ Installation
+## 🛠️ Getting Started
 
-**1. Clone the repository:**
+### 1. Environment Setup
+
+We recommend using Conda to manage your environment.
 ```bash
-git clone [https://github.com/lzq3367785771/Elamamba.git](https://github.com/lzq3367785771/Elamamba.git)
-cd Elamamba
+conda create -n elamamba python=3.9 -y
+conda activate elamamba
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Compile PointNet2 operations
+cd extensions/pointnet2_ops_lib
+python setup.py install
+cd ../../
