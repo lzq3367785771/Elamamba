@@ -80,6 +80,3 @@ To evaluate a trained checkpoint on ScanObjectNN:
 ```shell
 CUDA_VISIBLE_DEVICES=0 python main.py --test --config cfgs/finetune_scan_hardest.yaml --ckpts <path/to/best_checkpoint.pth> --exp_name evaluate_scan_best
 ```
-
-### 5. Visualization (Golden Sample Hunter)
-Our evaluation script automatically supports generating qualitative analysis data. During the `--test` process, the built-in **Golden Sample Hunter** will automatically capture specific point clouds where ElaMamba succeeds (and save them as `.npy` files in the `Paper_Vis_Data/` directory) for your paper visualization needs.
