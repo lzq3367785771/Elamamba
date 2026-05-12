@@ -95,7 +95,7 @@ Our codebase is built upon several excellent open-source projects. We express ou
 
 ## 📖 Citation
 
-If you find our method, code, or "Golden Sample Hunter" useful in your research, please consider giving us a star ⭐ and citing our paper:
+If you find our method, code useful in your research, please consider giving us a star ⭐ and citing our paper:
 
 ```bibtex
 @article{ElaMamba2026,
