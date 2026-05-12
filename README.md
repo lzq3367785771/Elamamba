@@ -47,9 +47,9 @@ In this work, we introduce **ElaMamba**, a novel architecture featuring an **Ela
 
 | Task | Dataset | Config | Overall Acc. | Download (ckpt/log) |
 | :---- | :---- | :---- |:-------:|:---:|
-| Pre-training | ShapeNet | [pretrain.yaml](./cfgs/pretrain.yaml) | N.A. | [ckpt](#) |
-| Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | **93.0%** | [ckpt](#) \| [log](#) |
-| Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | **89.34%** | [ckpt](#) \| [log](#) |
+| Pre-training | ShapeNet | [pretrain.yaml](./cfgs/pretrain.yaml) | N.A. | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/pretrain.pth) |
+| Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | **93.0%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/modelnet_best.pth) \| [log](#) |
+| Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | **89.34%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/scanobjectnn_best.pth) \| [log](#) |
 
 *(Note: Click the links above to download the pre-trained weights and training logs. Links will be activated upon paper release.)*
 
