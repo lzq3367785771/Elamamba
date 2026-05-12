@@ -99,7 +99,7 @@ If you find our method, code useful in your research, please consider giving us 
 
 ```bibtex
 @article{ElaMamba2026,
-      title={ElaMamba: Enhancing 3D Point Cloud Analysis with Elastic Structural Scanning}, 
+      title={ElaMamba: Empowering State Space Models with Elastic Structural Scanning for 3D Point Clouds}, 
       author={Your Name and Co-authors},
       journal={arXiv preprint},
       year={2026}
