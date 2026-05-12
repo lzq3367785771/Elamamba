@@ -48,7 +48,7 @@ State Space Models (SSMs), particularly Mamba, offer linear complexity for seque
 | Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | **93.0%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/modelnet_best.pth)|
 | Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | **88.34%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/scanobjectnn_best.pth)|
 
-*(Note: Click the links above to download the pre-trained weights and training logs. Links will be activated upon paper release.)*
+*(Note: Click the links above to download the pre-trained weights. Links will be activated upon paper release.)*
 
 ## 🛠️ Getting Started
 
