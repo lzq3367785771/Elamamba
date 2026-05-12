@@ -377,31 +377,6 @@ def test(base_model, test_dataloader, args, config, logger=None):
                 torch.cuda.synchronize()
                 inference_time_list.append(time.time() - time_start)
 
-            # import glob
-            # save_dir = "/root/autodl-tmp/PointMamba-official_backup_20260411/PointMamba_v3/Paper_Vis_Data/ScanObject_ElaMamba_gold"
-            # if not os.path.exists(save_dir):
-            #     os.makedirs(save_dir, exist_ok=True)
-            # pm_wrong_dir = "/root/autodl-tmp/PointMamba-official_backup_20260411/PointMamba_v3/Paper_Vis_Data/ScanObject_PointMamba_false"
-            # if not hasattr(base_model, 'target_ids'):
-            #     base_model.target_ids = set()
-            #     for f in glob.glob(f"{pm_wrong_dir}/*.npy"):
-            #         name = os.path.basename(f).replace('.npy', '')
-            #         parts = name.split('_')
-            #         base_model.target_ids.add(f"{parts[-2]}_{parts[-1]}")
-            #     from collections import defaultdict
-            #     base_model.class_golden_counts = defaultdict(int)
-
-            # for i in range(points.shape[0]):
-            #     pts_array = points[i].cpu().numpy()
-            #     gt_lbl = target[i].cpu().item()
-            #     pred_lbl = pred[i].cpu().item()
-            #     identifier = f"b{idx}_i{i}"
-            #     if identifier in base_model.target_ids and gt_lbl == pred_lbl:
-            #         if base_model.class_golden_counts[gt_lbl] < 3:
-            #             save_name = f"{save_dir}/Golden_GT_{gt_lbl}_ElaPred_{pred_lbl}_{identifier}.npy"
-            #             np.save(save_name, pts_array)
-            #             base_model.class_golden_counts[gt_lbl] += 1
-            #             print(f"🌟 捕获 [类别 {gt_lbl}] 黄金样本 ({base_model.class_golden_counts[gt_lbl]}/3): {save_name}")
 
         inference_time = np.mean(inference_time_list)
         inference_fps = 1 / inference_time * config.total_bs
