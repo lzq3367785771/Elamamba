@@ -3,7 +3,7 @@
 
 <div align="center">
 <h1>ElaMamba</h1>
-<h3>Enhancing 3D Point Cloud Analysis with Elastic Structural Scanning</h3>
+<h3>Empowering State Space Models with Elastic Structural Scanning for 3D Point Clouds</h3>
 
 [Your Name](https://your-homepage.com/)<sup>1</sup> \*, [Co-author Name](https://co-author.com/)<sup>1</sup> \*, [Co-author Name]()<sup>2</sup>, and [Advisor Name]()<sup>1†</sup>
 
