@@ -20,7 +20,6 @@
 ## 📣 News
 
 - **[May 2026]** 🚀 We release the official implementation of **ElaMamba**, including the complete Elastic Structural Scanning (ESS) module and pre-trained weights!
-- **[May 2026]** The codebase has been fully refactored to support multi-GPU and single-GPU setups seamlessly using `torch.distributed.launch`.
 - **[Coming Soon]** The paper will be available on arXiv shortly.
 
 ## 📝 Abstract
