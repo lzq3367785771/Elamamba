@@ -35,11 +35,13 @@ State Space Models (SSMs), particularly Mamba, offer linear complexity for seque
 
 ## 🏛️ Architecture Overview
 
-<div align="center">    
- <img src="./figure/visio_elamamba.png" width="888" align="center" />
- <br><br>
- <em><strong>Figure 1: The overall architecture of the proposed ElaMamba.</strong> Given a raw 3D point cloud, initial geometric features and center coordinates are extracted via FPS and KNN tokenization. The rigidly indexed sequence is then processed by four core micro-modules: <strong>(A) Elastic Structural Scanning (ESS)</strong> adaptively predicts physical micro-deformation offsets ($\Delta \mathbf{P}$) to bypass geometric voids while preserving the macroscopic Hilbert prior; <strong>(B) Offset-Aware Dynamic Gate</strong> modulates feature propagation by autonomously suppressing irrelevant background noise based on deformation costs; <strong>(C) Spatial Aware Indicator</strong> injects deformed positional cues into the purified sequence; and <strong>(D) State Space Model (SSM)</strong> performs linear-time global context modeling via MixerModel stacks. The entire framework is governed by an <strong>Adaptive Regularization Loss</strong> ($\mathcal{L}_{reg}$) to dynamically balance spatial elasticity and structural rigidity.</em>
+<div align="center">
+  <img src="./figure/visio_elamamba.png" width="888" />
 </div>
+
+<p align="justify">
+  Figure 1: The overall architecture of the proposed <b>ElaMamba</b>. Given a raw 3D point cloud, initial geometric features and center coordinates are extracted via FPS and KNN tokenization. The rigidly indexed sequence is then processed by four core micro-modules: <b>(A) Elastic Structural Scanning (ESS)</b> adaptively predicts physical micro-deformation offsets ($\Delta \mathbf{P}$) to bypass geometric voids while preserving the macroscopic Hilbert prior; <b>(B) Offset-Aware Dynamic Gate</b> modulates feature propagation by autonomously suppressing irrelevant background noise based on deformation costs; <b>(C) Spatial Aware Indicator</b> injects deformed positional cues into the purified sequence; and <b>(D) State Space Model (SSM)</b> performs linear-time global context modeling via MixerModel stacks. The entire framework is governed by an <b>Adaptive Regularization Loss</b> ($\mathcal{L}_{reg}$) to dynamically balance spatial elasticity and structural rigidity.
+</p>
 
 ## 📊 Main Results
 
