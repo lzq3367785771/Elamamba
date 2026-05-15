@@ -37,8 +37,9 @@ State Space Models (SSMs), particularly Mamba, offer linear complexity for seque
 
 <div align="center">    
  <img src="./figure/visio_elamamba.png" width="888" align="center" />
- 
- *Figure 1: The overall architecture of ElaMamba and the detailed design of the ESS module.*
+
+ *Figure 1: \textbf{The overall architecture of the proposed ElaMamba.} Given a raw 3D point cloud, initial geometric features and center coordinates are extracted via FPS and KNN tokenization. The rigidly indexed sequence is then processed by four core micro-modules: \textbf{(A) Elastic Structural Scanning (ESS)} adaptively predicts physical micro-deformation offsets ($\Delta \mathbf{P}$) to bypass geometric voids while preserving the macroscopic Hilbert prior[cite: 72, 82]; \textbf{(B) Offset-Aware Dynamic Gate} modulates feature propagation by autonomously suppressing irrelevant background noise based on deformation costs[cite: 73, 84]; \textbf{(C) Spatial Aware Indicator} injects deformed positional cues into the purified sequence [cite: 74, 89]; and \textbf{(D) State Space Model (SSM)} performs linear-time global context modeling via MixerModel stacks. The entire framework is governed by an \textbf{Adaptive Regularization Loss} ($\mathcal{L}_{reg}$) to dynamically balance spatial elasticity and structural rigidity.}
+    \label{fig:overall_architecture}*
 </div>
 
 ## 📊 Main Results
