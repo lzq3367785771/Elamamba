@@ -36,7 +36,7 @@ State Space Models (SSMs), particularly Mamba, offer linear complexity for seque
 ## 🏛️ Architecture Overview
 
 <div align="center">    
- <img src="./figure/visio_elamamba.pdf" width = "888"  align=center />
+ <img src="./figure/visio_elamamba.png" width="888" align="center" />
  *Figure 1: The overall architecture of ElaMamba and the detailed design of the ESS module.*
 </div>
 
