@@ -5,11 +5,13 @@
 <h1>ElaMamba</h1>
 <h3>Empowering State Space Models with Elastic Structural Scanning for 3D Point Clouds</h3>
 
-[Your Name](https://your-homepage.com/)<sup>1</sup> \*, [Co-author Name](https://co-author.com/)<sup>1</sup> \*, [Co-author Name]()<sup>2</sup>, and [Advisor Name]()<sup>1†</sup>
+[Zhiqiang Li]()<sup>1</sup>\*, [Qi Liu]()<sup>1</sup>\*, [Yufei Li]()<sup>2</sup>, [Qiang Feng]()<sup>3</sup>, [Shiyang Li]()<sup>1</sup>, [Xiyue Wang]()<sup>1</sup>, [Yining Sun]()<sup>1</sup>, [Xin Liu]()<sup>1</sup>, [Mengfan Ma]()<sup>1</sup>, [Yinghao Sun]()<sup>1</sup>, [Lei Yang]()<sup>1</sup>, [Xiaohong Yu]()<sup>1</sup>, [Chenfei Shi]()<sup>1</sup>, [Yixuan Ding]()<sup>1</sup>, and [Lin Da]()<sup>1†</sup>
 
-<sup>1</sup> Your University / Institute, <sup>2</sup> Collaborating Institute
+<sup>1</sup> School of Mathematical Sciences, Inner Mongolia University <br>
+<sup>2</sup> School of Computer Science and Communication Engineering, Northeastern University at Qinhuangdao <br>
+<sup>3</sup> School of Electronic and Information Engineering, Inner Mongolia University 
 
-(\*) Equal contribution. ($\dagger$) Corresponding author.
+(\*) Equal contribution. (†) Corresponding author.
 
 [![arXiv](https://img.shields.io/badge/Arxiv-Coming_Soon-b31b1b.svg?logo=arXiv)](#)
 [![Project](https://img.shields.io/badge/Homepage-project-orange.svg?logo=googlehome)](#)
