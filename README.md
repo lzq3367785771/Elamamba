@@ -95,9 +95,9 @@ Please organize your datasets in the `data/` directory as follows:
 
 Our codebase is built upon several excellent open-source projects. We express our gratitude to the authors of:
 
-- [PointMamba](#)
-- [Point-MAE](#)
-- [Mamba](#)
+* [PointMamba](https://github.com/LMD0311/PointMamba)
+* [Point-MAE](https://github.com/Pang-Yatian/Point-MAE)
+* [Mamba](https://github.com/state-spaces/mamba)
 
 ## 📖 Citation
 
