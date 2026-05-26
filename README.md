@@ -14,7 +14,6 @@
 (\*) Equal contribution. (†) Corresponding author.
 
 [![arXiv](https://img.shields.io/badge/Arxiv-Coming_Soon-b31b1b.svg?logo=arXiv)](#)
-[![Project](https://img.shields.io/badge/Homepage-project-orange.svg?logo=googlehome)](#)
 [![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 </div>
