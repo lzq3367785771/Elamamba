@@ -104,8 +104,8 @@ If you find our method, code useful in your research, please consider giving us 
 
 ```bibtex
 @article{ElaMamba2026,
-      title={ElaMamba: Empowering State Space Models with Elastic Structural Scanning for 3D Point Clouds}, 
-      author={Li, Zhiqiang and Liu, Qi and Li, Yufei and Feng, Qiang and Li, Shiyang and Wang, Xiyue and Sun, Yining and Liu, Xin and Ma, Mengfan and Sun, Yinghao and Yang, Lei and Yu, Xiaohong and Shi, Chenfei and Ding, Yixuan and Da, Lin},
-      journal={arXiv preprint},
-      year={2026}
+  title={ElaMamba: Empowering State Space Models with Elastic Structural Scanning for 3D Point Clouds},
+  author={Li, Zhiqiang and Liu, Qi and Li, Yufei and Feng, Qiang and Li, Shiyang and Wang, Xiyue and others},
+  journal={Under review},
+  year={2026}
 }
