@@ -1,15 +1,12 @@
-<div align="center">    
- </div>
-
 <div align="center">
 <h1>ElaMamba</h1>
 <h3>Empowering State Space Models with Elastic Structural Scanning for 3D Point Clouds</h3>
 
 [Zhiqiang Li]()<sup>1</sup>\*, [Qi Liu]()<sup>1</sup>\*, [Yufei Li]()<sup>2</sup>, [Qiang Feng]()<sup>3</sup>, [Shiyang Li]()<sup>1</sup>, [Xiyue Wang]()<sup>1</sup>, [Yining Sun]()<sup>1</sup>, [Xin Liu]()<sup>1</sup>, [Mengfan Ma]()<sup>1</sup>, [Yinghao Sun]()<sup>1</sup>, [Lei Yang]()<sup>1</sup>, [Xiaohong Yu]()<sup>1</sup>, [Chenfei Shi]()<sup>1</sup>, [Yixuan Ding]()<sup>1</sup>, and [Lin Da]()<sup>1†</sup>
 
-<sup>1</sup> School of Mathematical Sciences, Inner Mongolia University <br>
-<sup>2</sup> School of Computer Science and Communication Engineering, Northeastern University at Qinhuangdao <br>
-<sup>3</sup> School of Electronic and Information Engineering, Inner Mongolia University 
+<sup>1</sup> School of Mathematical Sciences, Inner Mongolia University, Hohhot, China <br>
+<sup>2</sup> School of Computer Science and Communication Engineering, Northeastern University, Qinhuangdao, China <br>
+<sup>3</sup> School of Electronic and Information Engineering, Inner Mongolia University, Hohhot, China
 
 (\*) Equal contribution. (†) Corresponding author.
 
@@ -25,34 +22,32 @@
 
 ## 📝 Abstract
 
-State Space Models (SSMs), particularly Mamba, offer linear complexity for sequence modeling, yet their translation to unordered 3D point clouds is hindered by the fundamental mismatch between 1D sequences and 3D geometries. Current approaches heavily depend on rigid serialization techniques that disrupt spatial adjacency, ultimately degrading feature representation and long-range memory retention. To bridge this gap, we introduce ElaMamba, a novel architecture designed to inherently maintain structural dependencies within the state space. 
-Breaking away from static scanning, ElaMamba employs an Elastic Structural Scanning (ESS) mechanism to adaptively seek out salient geometric structures via differentiable micro-deformations. This spatial elasticity is controlled by a novel Adaptive Regularization Loss, utilizing the $L_{2}$ norm of spatial offsets to enforce a rigid topological scan on clean datasets while permitting necessary deformations to navigate real-world noise. Additionally, an Offset-Aware Dynamic Gating module is integrated to selectively modulate feature propagation, preventing the network from absorbing irrelevant background clutter. 
-Extensive evaluations confirm that ElaMamba effectively overcomes the vulnerability of rigid serialization, achieving highly competitive overall accuracies of 93.0\% on ModelNet40 and 88.34\% on the highly challenging ScanObjectNN dataset, substantially outperforming existing Transformer and Mamba-based baselines.
+ElaMamba studies geometry-conditioned representation for point-cloud classification with a selective state-space backbone. Following FPS/KNN tokenization, the model retains Hilbert and Hilbert-trans token orderings. Elastic Structural Scanning (ESS) predicts bounded feature-conditioned coordinate offsets, which condition positional embeddings and a channel-wise gating layer without reordering tokens or resampling local point features. Branch-wise affine transformations and a spatial indicator further modulate the representation before Mamba processing. Training includes a fixed-weight mean-squared offset penalty. ElaMamba achieves **93.0%** overall accuracy on ModelNet40 and **88.34%** on ScanObjectNN PB-T50-RS without voting. These results support competitive classification performance. Our code is available in this repository.
 
-## 🌟 Key Innovations
+## 🌟 Key Contributions
 
-* **Elastic Structural Scanning (ESS):** Dynamically optimizes the scanning sequence offsets to capture local geometric priors.
-* **Dynamic Gating Mechanism:** Intelligently fuses features from different scanning directions based on structural salience.
-* **Adaptive Regularization Loss ($\mathcal{L}_{reg}$):** A novel constraint applied directly to the ESS offset predictions, preventing sequence degeneration during early training phases.
-* **Golden Sample Hunter:** A built-in evaluation tool to automatically capture and save hard-to-classify point clouds where ElaMamba succeeds over traditional baselines.
+* **Geometry-conditioned fixed serialization:** ESS predicts bounded, feature-conditioned coordinate offsets after Hilbert and Hilbert-trans serialization while retaining the fixed token indices. The offsets do not trigger a second sorting operation, point resampling, or neighborhood reconstruction.
+* **Offset-conditioned representation modulation:** Displaced positional anchors, an Offset-Aware Dynamic Gate, branch-specific affine transformations, and a Spatial-Aware Indicator jointly modulate the token representation supplied to the Mamba backbone.
+* **Explicit offset regularization:** A fixed-weight mean-squared offset penalty constrains the magnitude of the learned coordinate adjustments during training.
+* **Point-cloud classification results:** ElaMamba obtains 93.0% OA on ModelNet40 and 88.34% OA on ScanObjectNN PB-T50-RS without voting under the reported evaluation protocols.
 
 ## 🏛️ Architecture Overview
 
 <div align="center">
-  <img src="./figure/elamamba0925.png" width="888" />
+  <img src="./figure/elamamba0925.png" width="888" alt="Overall architecture of ElaMamba" />
 </div>
 
 <p align="justify">
-  Figure 1: The overall architecture of the proposed <b>ElaMamba</b>. Given a raw 3D point cloud, initial geometric features and center coordinates are extracted via FPS and KNN tokenization. The rigidly indexed sequence is then processed by four core micro-modules: <b>(A) Elastic Structural Scanning (ESS)</b> adaptively predicts physical micro-deformation offsets ($\Delta \mathbf{P}$) to bypass geometric voids while preserving the macroscopic Hilbert prior; <b>(B) Offset-Aware Dynamic Gate</b> modulates feature propagation by autonomously suppressing irrelevant background noise based on deformation costs; <b>(C) Spatial Aware Indicator</b> injects deformed positional cues into the purified sequence; and <b>(D) State Space Model (SSM)</b> performs linear-time global context modeling via MixerModel stacks. The entire framework is governed by an <b>Adaptive Regularization Loss</b> ($\mathcal{L}_{reg}$) to dynamically balance spatial elasticity and structural rigidity.
+  <b>Figure 1: Overall architecture of ElaMamba.</b> FPS and KNN tokenization generate group-center coordinates and geometric token features, followed by two fixed-index streams constructed with Hilbert and Hilbert-trans serialization. <b>(A) Elastic Structural Scanning (ESS)</b> predicts bounded, feature-conditioned coordinate offsets and constructs displaced positional anchors without point resampling, neighborhood reconstruction, or changes to the discrete serialization order. <b>(B) The Offset-Aware Dynamic Gate</b> produces channel-wise gating coefficients from the token features and complete offset vectors. <b>(C) The Spatial-Aware Indicator</b> combines gated features with displaced-anchor embeddings to generate input-dependent affine modulation terms. <b>(D) Standard Mamba blocks</b> aggregate sequence context before stream-wise pooling and classification. A fixed-weight mean-squared offset penalty constrains the learned coordinate adjustments during training.
 </p>
 
 ## 📊 Main Results
 
-| Task | Dataset | Config | Overall Acc. | Download (ckpt/log) |
-| :---- | :---- | :---- |:-------:|:---:|
-| Pre-training | ShapeNet | [pretrain.yaml](./cfgs/pretrain.yaml) | N.A. | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/pretrain.pth) |
-| Classification | ModelNet40 | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | **93.0%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/modelnet_best.pth)|
-| Classification | ScanObjectNN | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | **88.34%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/scanobjectnn_best.pth)|
+| Task | Dataset | Input points | Evaluation | Config | Overall Acc. | Download |
+| :---- | :---- | :----: | :----: | :---- | :----: | :----: |
+| Pre-training | ShapeNet | — | — | [pretrain.yaml](./cfgs/pretrain.yaml) | N.A. | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/pretrain.pth) |
+| Classification | ModelNet40 | 1,024 | Without voting | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | **93.0%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/modelnet_best.pth) |
+| Classification | ScanObjectNN PB-T50-RS | 2,048 | Without voting | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | **88.34%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/scanobjectnn_best.pth) |
 
 *(Note: Click the links above to download the pre-trained weights. Links will be activated upon paper release.)*
 
@@ -100,7 +95,7 @@ Our codebase is built upon several excellent open-source projects. We express ou
 
 ## 📖 Citation
 
-If you find our method, code useful in your research, please consider giving us a star ⭐ and citing our paper:
+If you find our method or code useful in your research, please consider giving us a star ⭐ and citing our paper:
 
 ```bibtex
 @article{ElaMamba2026,
@@ -109,3 +104,4 @@ If you find our method, code useful in your research, please consider giving us 
   journal={Under review},
   year={2026}
 }
+```
