@@ -10,7 +10,7 @@
 
 (\*) Equal contribution. (†) Corresponding author.
 
-[![arXiv](https://img.shields.io/badge/Arxiv-Coming_Soon-b31b1b.svg?logo=arXiv)](#)
+
 [![Code License](https://img.shields.io/badge/Code%20License-Apache_2.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 </div>
@@ -18,7 +18,7 @@
 ## 📣 News
 
 - **[May 2026]** 🚀 We release the official implementation of **ElaMamba**, including the complete Elastic Structural Scanning (ESS) module and pre-trained weights!
-- **[Coming Soon]** The paper will be available on arXiv shortly.
+
 
 ## 📝 Abstract
 
@@ -49,7 +49,7 @@ ElaMamba studies geometry-conditioned representation for point-cloud classificat
 | Classification | ModelNet40 | 1,024 | Without voting | [finetune_modelnet.yaml](./cfgs/finetune_modelnet.yaml) | **93.0%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/modelnet_best.pth) |
 | Classification | ScanObjectNN PB-T50-RS | 2,048 | Without voting | [finetune_scan_hardest.yaml](./cfgs/finetune_scan_hardest.yaml) | **88.34%** | [ckpt](https://github.com/lzq3367785771/Elamamba/releases/download/v1.0/scanobjectnn_best.pth) |
 
-*(Note: Click the links above to download the pre-trained weights. Links will be activated upon paper release.)*
+
 
 ## 🛠️ Getting Started
 
