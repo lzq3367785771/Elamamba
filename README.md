@@ -39,7 +39,7 @@ Extensive evaluations confirm that ElaMamba effectively overcomes the vulnerabil
 ## 🏛️ Architecture Overview
 
 <div align="center">
-  <img src="./figure/elamamba0925.jpg" width="888" />
+  <img src="./figure/elamamba0925.pdf" width="888" />
 </div>
 
 <p align="justify">
